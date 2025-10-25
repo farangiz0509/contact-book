@@ -2,15 +2,15 @@ from app.contact_book import ContactBook
 
 
 def main() -> None:
-
     book = ContactBook()
-    
+
     while True:
         print(
             "1 Add new contact\n"
-            "2 Show all contacts\n"
-            "3 Search contact by name\n"
-            "4 Update or delete contact"
+            "2kontactlarni korsatish hammasini\n"
+            "3 contactni ismi buyicha izlash\n"
+            "4 yangilash yoki ochirish contactni\n"
+            "5 chiqish"
         )
 
         choice = input("> ")
@@ -18,10 +18,26 @@ def main() -> None:
             name = input("name: ")
             phone = input("phone: ")
             email = input("email: ")
-
             book.add_contact(name, phone, email)
 
         elif choice == '2':
             book.show_all()
 
-main()
+        elif choice == '3':
+            name = input("izlash uchun ism kiriting: ")
+            book.search(name)
+
+        elif choice == '4':
+            name = input("yangilash yoki ochirish uchun ism kiriting: ")
+            book.update_or_delete(name)
+
+        elif choice == '5':
+            print("xayr!")
+            break
+
+        else:
+            print("Invalid tanlov.")
+
+
+if __name__ == "__main__":
+    main()
